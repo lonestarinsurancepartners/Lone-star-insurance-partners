@@ -1,0 +1,728 @@
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[build]
+  publish = "."
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lone Star Insurance Partners</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a1628;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --cream: #f5f0e8;
+    --rust: #8b3a2a;
+    --white: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    background: var(--cream);
+    color: var(--navy);
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--navy);
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* star field */
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 10% 20%, rgba(201,168,76,0.6) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 25% 60%, rgba(255,255,255,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 40% 15%, rgba(255,255,255,0.3) 0%, transparent 100%),
+      radial-gradient(2px 2px at 55% 75%, rgba(201,168,76,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 70% 35%, rgba(255,255,255,0.4) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 85% 55%, rgba(201,168,76,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 90% 10%, rgba(255,255,255,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 15% 85%, rgba(255,255,255,0.3) 0%, transparent 100%),
+      radial-gradient(2px 2px at 60% 90%, rgba(201,168,76,0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 33% 45%, rgba(255,255,255,0.5) 0%, transparent 100%);
+    pointer-events: none;
+  }
+
+  /* diagonal gold band */
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    left: -5%;
+    width: 110%;
+    height: 140px;
+    background: var(--cream);
+    transform: skewY(-3deg);
+    z-index: 1;
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 28px 60px;
+    position: relative;
+    z-index: 10;
+    border-bottom: 1px solid rgba(201,168,76,0.25);
+    animation: fadeDown 0.8s ease both;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .star-icon {
+    width: 44px;
+    height: 44px;
+    color: var(--gold);
+  }
+
+  .logo-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .logo-text .top {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 0.08em;
+    line-height: 1;
+  }
+
+  .logo-text .bottom {
+    font-size: 0.62rem;
+    color: var(--gold);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-top: 3px;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  .nav-cta {
+    background: var(--gold);
+    color: var(--navy) !important;
+    padding: 10px 22px;
+    font-weight: 700 !important;
+    letter-spacing: 0.08em !important;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--gold-light) !important; color: var(--navy) !important; }
+
+  /* hero content */
+  .hero-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 40px 120px;
+    position: relative;
+    z-index: 5;
+    animation: fadeUp 1s 0.3s ease both;
+  }
+
+  .hero-eyebrow {
+    color: var(--gold);
+    font-size: 0.72rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .hero-h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 6vw, 5.5rem);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.1;
+    max-width: 780px;
+    margin-bottom: 28px;
+  }
+
+  .hero-h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-sub {
+    color: rgba(255,255,255,0.65);
+    font-size: 1.05rem;
+    max-width: 520px;
+    line-height: 1.8;
+    margin-bottom: 48px;
+    font-style: italic;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--navy);
+    padding: 16px 38px;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+  .btn-outline {
+    border: 1px solid rgba(201,168,76,0.5);
+    color: var(--gold);
+    padding: 16px 38px;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    display: inline-block;
+    transition: border-color 0.2s, color 0.2s, transform 0.2s;
+  }
+
+  .btn-outline:hover { border-color: var(--gold); color: var(--white); transform: translateY(-2px); }
+
+  /* ── STATS BAND ── */
+  .stats-band {
+    background: var(--gold);
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .stat {
+    flex: 1;
+    max-width: 260px;
+    text-align: center;
+    padding: 40px 24px;
+    border-right: 1px solid rgba(10,22,40,0.15);
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .stat:last-child { border-right: none; }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: var(--navy);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(10,22,40,0.65);
+  }
+
+  /* ── SERVICES ── */
+  .section {
+    padding: 100px 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 64px;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .section-eyebrow {
+    color: var(--gold);
+    font-size: 0.7rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.2;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--rust);
+  }
+
+  .divider {
+    width: 60px;
+    height: 2px;
+    background: var(--gold);
+    margin: 20px auto 0;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2px;
+    background: rgba(10,22,40,0.08);
+  }
+
+  .card {
+    background: var(--white);
+    padding: 48px 36px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+
+  .card:hover { transform: translateY(-6px); }
+  .card:hover::before { transform: scaleX(1); }
+
+  .card-icon {
+    width: 52px;
+    height: 52px;
+    margin-bottom: 24px;
+    color: var(--gold);
+  }
+
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 14px;
+  }
+
+  .card-body {
+    font-size: 0.88rem;
+    color: rgba(10,22,40,0.65);
+    line-height: 1.8;
+  }
+
+  /* ── WHY US ── */
+  .why-section {
+    background: var(--navy);
+    padding: 100px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .why-section::before {
+    content: '';
+    position: absolute;
+    top: -80px;
+    left: -5%;
+    width: 110%;
+    height: 140px;
+    background: var(--cream);
+    transform: skewY(-2deg);
+  }
+
+  .why-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .why-text .section-eyebrow { color: var(--gold); }
+  .why-text .section-title { color: var(--white); text-align: left; }
+  .why-text .divider { margin: 20px 0 0; }
+
+  .why-text p {
+    color: rgba(255,255,255,0.6);
+    font-style: italic;
+    line-height: 1.9;
+    margin-top: 28px;
+    font-size: 0.95rem;
+  }
+
+  .why-list {
+    list-style: none;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .why-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .why-check {
+    width: 22px;
+    height: 22px;
+    background: var(--gold);
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+
+  .why-check svg { width: 12px; height: 12px; stroke: var(--navy); }
+
+  .why-item-text strong {
+    display: block;
+    color: var(--white);
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    margin-bottom: 4px;
+  }
+
+  .why-item-text span {
+    color: rgba(255,255,255,0.5);
+    font-size: 0.82rem;
+    line-height: 1.6;
+  }
+
+  /* ── CTA ── */
+  .cta-section {
+    background: var(--cream);
+    padding: 100px 60px;
+    text-align: center;
+  }
+
+  .cta-box {
+    max-width: 700px;
+    margin: 0 auto;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .cta-box .section-title { margin-bottom: 20px; }
+
+  .cta-box p {
+    color: rgba(10,22,40,0.6);
+    font-style: italic;
+    line-height: 1.8;
+    margin-bottom: 40px;
+  }
+
+  .cta-form {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .cta-form input {
+    border: 1px solid rgba(10,22,40,0.2);
+    padding: 16px 22px;
+    font-family: 'Libre Baskerville', serif;
+    font-size: 0.9rem;
+    width: 240px;
+    outline: none;
+    background: var(--white);
+    color: var(--navy);
+    transition: border-color 0.2s;
+  }
+
+  .cta-form input:focus { border-color: var(--gold); }
+  .cta-form input::placeholder { color: rgba(10,22,40,0.35); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    padding: 48px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 24px;
+    border-top: 1px solid rgba(201,168,76,0.2);
+  }
+
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .footer-brand .top { color: var(--white); font-family: 'Playfair Display', serif; font-weight: 700; }
+  .footer-brand .bottom { color: var(--gold); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; }
+
+  footer p {
+    color: rgba(255,255,255,0.3);
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 20px 24px; }
+    .nav-links { display: none; }
+    .section, .why-section, .cta-section { padding: 60px 24px; }
+    .why-inner { grid-template-columns: 1fr; gap: 40px; }
+    footer { flex-direction: column; text-align: center; padding: 36px 24px; }
+    .hero-h1 { font-size: 2.4rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <nav>
+    <div class="logo">
+      <svg class="star-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="22,2 27.5,16.5 44,17 32,27 36,42 22,34 8,42 12,27 0,17 16.5,16.5" fill="currentColor"/>
+      </svg>
+      <div class="logo-text">
+        <span class="top">Lone Star Insurance Partners</span>
+        <span class="bottom">Protecting Texas Families</span>
+      </div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#">Life Insurance</a></li>
+      <li><a href="#">Mortgage Protection</a></li>
+      <li><a href="#">Final Expense</a></li>
+      <li><a href="#" class="nav-cta">Get a Quote</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero-body">
+    <p class="hero-eyebrow">★ &nbsp; Texas-Based Life Insurance Specialists &nbsp; ★</p>
+    <h1 class="hero-h1">Protect What<br><em>Matters Most</em><br>to Your Family</h1>
+    <p class="hero-sub">Life insurance that gives your loved ones the security they deserve — no matter what tomorrow brings.</p>
+    <div class="hero-buttons">
+      <a href="#" class="btn-primary">Get Your Free Quote</a>
+      <a href="#" class="btn-outline">Learn More</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── STATS ── -->
+<div class="stats-band">
+  <div class="stat">
+    <div class="stat-num">500+</div>
+    <div class="stat-label">Families Protected</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">15+</div>
+    <div class="stat-label">Carriers Available</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">24hr</div>
+    <div class="stat-label">Quote Turnaround</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">100%</div>
+    <div class="stat-label">Independent Agents</div>
+  </div>
+</div>
+
+<!-- ── SERVICES ── -->
+<div style="background: var(--cream); padding: 80px 0;">
+  <div class="section">
+    <div class="section-header">
+      <p class="section-eyebrow">What We Offer</p>
+      <h2 class="section-title">Coverage Built for <em>Real Life</em></h2>
+      <div class="divider"></div>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <svg class="card-icon" viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M26 6 L40 14 L40 26 C40 35 26 46 26 46 C26 46 12 35 12 26 L12 14 Z"/>
+          <path d="M20 26 L24 30 L32 22"/>
+        </svg>
+        <h3 class="card-title">Term Life Insurance</h3>
+        <p class="card-body">Affordable coverage for a set period — ideal for young families, new homeowners, or anyone building financial stability. Rates start surprisingly low.</p>
+      </div>
+      <div class="card">
+        <svg class="card-icon" viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="1.8">
+          <rect x="8" y="18" width="36" height="26" rx="2"/>
+          <path d="M16 18V14a10 10 0 0 1 20 0v4"/>
+          <circle cx="26" cy="31" r="4"/>
+        </svg>
+        <h3 class="card-title">Mortgage Protection</h3>
+        <p class="card-body">Keep your family in their home if the unthinkable happens. Customized policies designed to cover your exact mortgage balance and term.</p>
+      </div>
+      <div class="card">
+        <svg class="card-icon" viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="1.8">
+          <circle cx="26" cy="20" r="10"/>
+          <path d="M10 44c0-8.8 7.2-16 16-16s16 7.2 16 16"/>
+          <path d="M22 34 L26 44 L30 34"/>
+        </svg>
+        <h3 class="card-title">Whole Life Insurance</h3>
+        <p class="card-body">Lifetime protection that builds cash value over time. A powerful financial tool that protects your family and grows with you for decades.</p>
+      </div>
+      <div class="card">
+        <svg class="card-icon" viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M26 10 L38 16 L38 28 C38 36 32 42 26 44 C20 42 14 36 14 28 L14 16 Z"/>
+          <path d="M19 28 L23 32 L33 22"/>
+        </svg>
+        <h3 class="card-title">Final Expense</h3>
+        <p class="card-body">Give your family the gift of peace of mind. Simple, guaranteed-issue policies that cover end-of-life costs so your loved ones aren't left with a burden.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── WHY US ── -->
+<div class="why-section">
+  <div class="why-inner">
+    <div class="why-text">
+      <p class="section-eyebrow">Why Lone Star?</p>
+      <h2 class="section-title">An Agent Who<br><em>Works for You</em></h2>
+      <div class="divider"></div>
+      <p>As independent agents, we're not tied to a single company. We shop dozens of top-rated carriers to find the policy that fits your life — and your budget.</p>
+      <ul class="why-list">
+        <li class="why-item">
+          <div class="why-check"><svg viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="why-item-text">
+            <strong>No Pressure. No Obligations.</strong>
+            <span>We give you real information so you can make the best decision for your family.</span>
+          </div>
+        </li>
+        <li class="why-item">
+          <div class="why-check"><svg viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="why-item-text">
+            <strong>Multiple Carriers Compared</strong>
+            <span>Access to 15+ top-rated insurers means better rates and better options.</span>
+          </div>
+        </li>
+        <li class="why-item">
+          <div class="why-check"><svg viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="why-item-text">
+            <strong>Local Texas Roots</strong>
+            <span>We live and work in the same communities we protect. We're neighbors first.</span>
+          </div>
+        </li>
+        <li class="why-item">
+          <div class="why-check"><svg viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="why-item-text">
+            <strong>Fast, Simple Process</strong>
+            <span>Most clients have coverage in place within 24–48 hours of their first call.</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <!-- decorative quote block -->
+    <div style="position: relative;">
+      <div style="background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.25); padding: 52px 44px; position: relative;">
+        <div style="position: absolute; top: -18px; left: 36px; font-family: 'Playfair Display', serif; font-size: 7rem; color: var(--gold); opacity: 0.3; line-height: 1;">&ldquo;</div>
+        <p style="font-family: 'Playfair Display', serif; font-size: 1.35rem; font-style: italic; color: var(--white); line-height: 1.7; position: relative; z-index: 1;">The right life insurance policy doesn't just pay a death benefit — it keeps a family in their home, sends kids to college, and preserves a lifetime of hard work.</p>
+        <div style="margin-top: 32px; display: flex; align-items: center; gap: 14px;">
+          <div style="width: 40px; height: 40px; background: var(--gold); border-radius: 50%;display:flex;align-items:center;justify-content:center;">
+            <svg width="20" height="20" viewBox="0 0 44 44" fill="var(--navy)"><polygon points="22,2 27.5,16.5 44,17 32,27 36,42 22,34 8,42 12,27 0,17 16.5,16.5"/></svg>
+          </div>
+          <div>
+            <div style="color: var(--gold); font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 700;">Lone Star Insurance Partners</div>
+            <div style="color: rgba(255,255,255,0.4); font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; margin-top: 2px;">Our Promise to You</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── CTA ── -->
+<div class="cta-section">
+  <div class="cta-box">
+    <p class="section-eyebrow">Take the First Step</p>
+    <h2 class="section-title">Get Your <em>Free Quote</em> Today</h2>
+    <div class="divider"></div>
+    <p style="margin-top: 24px;">No obligation. No pressure. Just clear answers and honest guidance from a neighbor who cares about your family's future.</p>
+    <div class="cta-form">
+      <input type="text" placeholder="Your Name">
+      <input type="tel" placeholder="Phone Number">
+      <a href="#" class="btn-primary" style="white-space:nowrap;">Request a Quote →</a>
+    </div>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-brand">
+    <svg width="34" height="34" viewBox="0 0 44 44" fill="none"><polygon points="22,2 27.5,16.5 44,17 32,27 36,42 22,34 8,42 12,27 0,17 16.5,16.5" fill="#c9a84c"/></svg>
+    <div class="logo-text">
+      <span class="top">Lone Star Insurance Partners</span>
+      <span class="bottom">Licensed · Independent · Texas</span>
+    </div>
+  </div>
+  <p>© 2025 Lone Star Insurance Partners · All Rights Reserved</p>
+  <p style="font-size:0.7rem; color: rgba(255,255,255,0.2);">Licensed Insurance Agent · TX Dept. of Insurance</p>
+</footer>
+
+</body>
+</html>
